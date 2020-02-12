@@ -52,15 +52,15 @@ let users = [
 
  let root = {
     hello: () => {
-      return 'Hello world!';
+        return 'Hello world!';
     },
     users: () => {
-      return users;
-  },
-  user: ({id}) => {
-    return users[id];
-  }
-  };
+        return users;
+    },
+    user: ({id}) => {
+        return users[id];
+    }
+};
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
