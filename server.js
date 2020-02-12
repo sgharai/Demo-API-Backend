@@ -21,7 +21,16 @@ let schema = buildSchema(`
     }
 `);
 
-let root = { hello: () => 'Hello world!'}
+let db = {
+    'a': {
+        name:'alpha'
+    },
+    'b':{
+        name:'beta'
+    }
+}
+
+let root = { hello: () => db}
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
