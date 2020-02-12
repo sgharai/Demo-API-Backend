@@ -30,7 +30,7 @@ let schema = buildSchema(`
 //     }
 // }
 
-let root = { hello: () => db}
+let root = { hello: () => "Hello world!"}
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
