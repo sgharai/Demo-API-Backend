@@ -37,7 +37,7 @@ let schema = buildSchema(`
 // }
 
 let root = { 
-    hello: () => "Hello world!",
+    // hello: () => "Hello world!",
     women: () => women
 }
 
