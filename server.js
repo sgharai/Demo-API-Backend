@@ -16,59 +16,51 @@ app.use(express.static('./'))
 app.listen(port, () => console.log("Hi Sofia~"))
 
 let schema = buildSchema(`
-    type Query {
-        hello: String
-        women:
-    }
-
-    type User {
-        _id: ID
-        name: String
-        gender: String
-    }
+  type User {
+    id: ID
+    name: String
+  }
+  type Query {
+    hello: String
+    user(id: Int):User
+    users:[User]
+  }
 `);
 
-// let db = {
-//     a: {
-//         name:'alpha'
-//     },
-//     b:{
-//         name:'beta'
-//     }
-// }
+let users = [
 
-let root = { 
-    // hello: () => "Hello world!",
-    women: () => women
-}
+    {
+     id:"0",
+     name:"mike",
+   },
+    {
+     id:"1",
+     name:"al",
+   },
+    {
+     id:"2",
+     name:"jen",
+   }
+ ]
+ 
+ // let fruitDB = {
+ //   {
+ //     id:0
+ //   }
+ 
+ // }
 
-let women = [
-     {
-        "_id": "5e446ccdeeda84bfeccb0a9e",
-        "name": "Whitney Rojas",
-        "gender": "female"
-      },
-      {
-        "_id": "5e446ccd2fa2bb2c21185453",
-        "name": "Harriet Velazquez",
-        "gender": "female"
-      },
-      {
-        "_id": "5e446ccd6a47a8360a7f74ce",
-        "name": "Jewell Hines",
-        "gender": "female"
-      },
-      {
-        "_id": "5e446ccd0add1868d72cf096",
-        "name": "Saundra Payne",
-        "gender": "female"
-      },
-      {
-        "_id": "5e446ccd135fa659817bb7b6",
-        "name": "Bettye Wiggins",
-        "gender": "female"
-      }
-    ]
+ let root = {
+    hello: () => {
+      return 'Hello world!';
+    },
+    users: () => {
+      return users;
+  },
+  user: ({id}) => {
+    return users[id];
+  }
+  };
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
