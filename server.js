@@ -18,6 +18,7 @@ app.listen(port, () => console.log("Hi Sofia~"))
 let schema = buildSchema(`
     type Query {
         hello: String
+        women: User
     }
 
     type User {
