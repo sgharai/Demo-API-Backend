@@ -21,14 +21,14 @@ let schema = buildSchema(`
     }
 `);
 
-let db = {
-    'a': {
-        name:'alpha'
-    },
-    'b':{
-        name:'beta'
-    }
-}
+// let db = {
+//     a: {
+//         name:'alpha'
+//     },
+//     b:{
+//         name:'beta'
+//     }
+// }
 
 let root = { hello: () => db}
 
